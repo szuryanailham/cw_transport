@@ -42,7 +42,7 @@ export const UnitsData = [
     description: "Medium Bus ini menawarkan kapasitas besar dengan kenyamanan tinggi, cocok untuk perjalanan bersama rombongan atau acara perusahaan.",
   },
   {
-    imageUrl: "/images/Big-bus.png",
+    imageUrl: "/images/Big-Bus.png",
     unitName: "Big Bus",
     price: 3200000,
     description: "Big Bus menawarkan kenyamanan maksimal untuk grup besar, dengan fasilitas lengkap dan kapasitas besar untuk perjalanan jarak jauh.",
