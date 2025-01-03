@@ -2,13 +2,7 @@ import Image from "next/image";
 import { MdPeopleAlt } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
 import { FaGasPump } from "react-icons/fa6";
-
-type CardUnitProps = {
-  imageUrl: string;
-  unitName: string;
-  price: number;
-  description: string;
-};
+import { CardUnitProps } from "@/types/index";
 
 const CardUnit: React.FC<CardUnitProps> = ({ imageUrl, unitName, price, description }) => {
   const formattedPrice = price ? price.toLocaleString("id-ID") : "Harga Tidak Tersedia";
