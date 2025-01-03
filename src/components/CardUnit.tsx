@@ -18,39 +18,39 @@ const CardUnit: React.FC<CardUnitProps> = ({ imageUrl, unitName, price, descript
   const whatsappUrl = `https://wa.me/628562711149?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="card bg-base-100 w-96 shadow-xl p-3">
+    <div className="card bg-base-100 w-96 shadow-xl p-3 dark:bg-gray-800">
       <figure className="p-2">
         <Image src={imageUrl} alt={unitName} width={800} height={600} objectFit="cover" />
       </figure>
       <div className="card-body p-4">
-        <h1 className="card-title text-xl font-bold mb-2">{unitName}</h1>
+        <h1 className="card-title text-xl font-bold mb-2 dark:text-white">{unitName}</h1>
         {/* Feature box */}
         <div className="flex justify-evenly px-5">
           {/* Icon 1 */}
           <div className="mb-2 flex flex-col items-center">
-            <div className="text-xl text-gray-700 border border-gray-300 rounded-lg p-2 inline-flex items-center justify-center">
+            <div className="text-xl text-gray-700 border border-gray-300 rounded-lg p-2 inline-flex items-center justify-center dark:text-gray-300 dark:border-gray-600">
               <IoTimeOutline />
             </div>
-            <p className="text-sm text-gray-700 mt-1">12 Jam</p>
+            <p className="text-sm text-gray-700 mt-1 dark:text-gray-300">12 Jam</p>
           </div>
           {/* Icon 2 */}
           <div className="mb-2 flex flex-col items-center">
-            <div className="text-xl text-gray-700 border border-gray-300 rounded-lg p-2 inline-flex items-center justify-center">
+            <div className="text-xl text-gray-700 border border-gray-300 rounded-lg p-2 inline-flex items-center justify-center dark:text-gray-300 dark:border-gray-600">
               <MdPeopleAlt />
             </div>
-            <p className="text-sm text-gray-700 mt-1">Driver</p>
+            <p className="text-sm text-gray-700 mt-1 dark:text-gray-300">Driver</p>
           </div>
           {/* Icon 3 */}
           <div className="mb-2 flex flex-col items-center">
-            <div className="text-xl text-gray-700 border border-gray-300 rounded-lg p-2 inline-flex items-center justify-center">
+            <div className="text-xl text-gray-700 border border-gray-300 rounded-lg p-2 inline-flex items-center justify-center dark:text-gray-300 dark:border-gray-600">
               <FaGasPump />
             </div>
-            <p className="text-sm text-gray-700 mt-1">Full</p>
+            <p className="text-sm text-gray-700 mt-1 dark:text-gray-300">Full</p>
           </div>
         </div>
-        <p className="text-sm text-gray-700 mb-5">{description}</p>
+        <p className="text-sm text-gray-700 mb-5 dark:text-gray-300">{description}</p>
         <div className="card-actions flex justify-between items-center">
-          <h2 className="text-lg text-gray-700 mb-4 font-bold">Rp. {formattedPrice}</h2>
+          <h2 className="text-lg text-gray-700 mb-4 font-bold dark:text-white">Rp. {formattedPrice}</h2>
           <a
             href={whatsappUrl}
             target="_blank" // Open in a new tab
