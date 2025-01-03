@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa";
 function Navbar() {
   return (
     <>
-      <nav className="navbar bg-neutral text-neutral-content fixed -top-0 z-50">
+      <nav className="navbar bg-neutral text-neutral-content">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
