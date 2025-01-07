@@ -95,7 +95,7 @@ function Page() {
 
         {/* Description Input */}
         <div className="mb-4">
-          <label className="block font-bold text-gray-700 dark:text-gray-300">Description</label>
+          <label className="block font-bold text-gray-700 dark:text-gray-300">kritik & saran</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
