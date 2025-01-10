@@ -1,11 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+import { useFeedbackStore } from "@/store/feedbackStore";
 
 function Page() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [description, setDescription] = useState("");
-  const [emotion, setEmotion] = useState<number | null>(null);
+  const { name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana, setName, setGmail, setKepuasan, setKritikDanSaran, setTauLayananKamiDariMana, submitForm, isLoading } = useFeedbackStore();
 
   const emotions = [
     { id: 1, label: "Sangat Tidak Puas", emoji: "😡" },
@@ -17,32 +15,7 @@ function Page() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Menyiapkan pesan yang akan dikirim ke WhatsApp
-    const message = `
-  📝 *Feedback Form* 📝
-
-  👤 *Nama:* ${name}
-  📞 *Nomor Telepon:* ${phone}
-  😌 *Kepuasan:* ${emotions.find((e) => e.id === emotion)?.label || "Belum dipilih"}
-  💬 *Kritik & Saran:* 
-  ${description}
-  
-  Terima kasih atas feedback Anda! 🙏
-`;
-
-    // Mengencode pesan untuk digunakan dalam URL WhatsApp
-    const encodedMessage = encodeURIComponent(message);
-
-    // Membuka WhatsApp dengan pesan yang sudah disiapkan
-    const whatsappURL = `https://wa.me/628562711149?text=${encodedMessage}`;
-    window.open(whatsappURL, "_blank");
-
-    // Reset form setelah pengiriman
-    setName("");
-    setPhone("");
-    setDescription("");
-    setEmotion(null);
+    submitForm();
   };
 
   return (
@@ -63,15 +36,15 @@ function Page() {
           />
         </div>
 
-        {/* Phone Number Input */}
+        {/* Gmail Input */}
         <div className="mb-4">
-          <label className="block font-bold text-gray-700 dark:text-gray-300">Phone Number</label>
+          <label className="block font-bold text-gray-700 dark:text-gray-300">Gmail</label>
           <input
-            type="tel"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            type="email"
+            value={gmail}
+            onChange={(e) => setGmail(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-400 dark:text-white"
-            placeholder="Masukkan nomor telepon Anda"
+            placeholder="Masukkan email Anda"
             required
           />
         </div>
@@ -81,35 +54,62 @@ function Page() {
           <label className="block font-bold text-gray-700 dark:text-gray-300 mb-2">Tingkat Kepuasan</label>
           <div className="flex flex-wrap justify-around items-center p-2">
             {emotions.map((item) => (
-              <button key={item.id} type="button" onClick={() => setEmotion(item.id)} className={`flex flex-col items-center focus:outline-none ${emotion === item.id ? "text-blue-500 scale-110" : "text-gray-400 hover:text-blue-300"}`}>
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setKepuasan(item.label)} // Set the emotion to the label (string)
+                className={`flex flex-col items-center focus:outline-none ${kepuasan === item.label ? "text-blue-500 scale-110" : "text-gray-400 hover:text-blue-300"}`}
+              >
                 <span className="text-2xl">{item.emoji}</span>
               </button>
             ))}
           </div>
-          {emotion && (
+          {kepuasan && (
             <p className="text-center mt-2 text-sm text-gray-500">
-              Anda memilih: <span className="font-semibold">{emotions.find((e) => e.id === emotion)?.label}</span>
+              Anda memilih: <span className="font-semibold">{kepuasan}</span>
             </p>
           )}
         </div>
 
+        {/* Survey Form Input */}
+        <div className="mb-4">
+          <label className="block font-bold text-gray-700 dark:text-gray-300">Bagaimana Anda mengetahui kami?</label>
+          <select
+            value={tauLayananKamiDariMana}
+            onChange={(e) => setTauLayananKamiDariMana(e.target.value)}
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-400 dark:text-white"
+            required
+          >
+            <option value="" disabled>
+              Pilih salah satu
+            </option>
+            <option value="teman">Teman</option>
+            <option value="media_sosial">Media Sosial</option>
+            <option value="iklan">Iklan</option>
+            <option value="lainnya">Lainnya</option>
+          </select>
+        </div>
+
         {/* Description Input */}
         <div className="mb-4">
-          <label className="block font-bold text-gray-700 dark:text-gray-300">kritik & saran</label>
+          <label className="block font-bold text-gray-700 dark:text-gray-300">Kritik & Saran</label>
           <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={kritikDanSaran}
+            onChange={(e) => setKritikDanSaran(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-400 dark:text-white"
             placeholder="Bagikan pengalaman atau feedback Anda"
             rows={4}
             required
           />
         </div>
-        <p className="text-center mt-4 text-gray-500 dark:text-gray-300 p-3">Silakan kirim di WhatsApp setelah submit.</p>
 
         {/* Submit Button */}
-        <button type="submit" className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-400">
-          Submit
+        <button
+          type="submit"
+          className="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-400"
+          disabled={isLoading}
+        >
+          {isLoading ? <span className="loading loading-spinner loading-md"></span> : "Submit"}
         </button>
       </form>
     </div>
