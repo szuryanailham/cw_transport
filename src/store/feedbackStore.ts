@@ -1,5 +1,5 @@
 import { create } from "zustand";
-
+import { toast, Bounce } from "react-toastify";
 interface FeedbackState {
   name: string;
   gmail: string;
@@ -50,10 +50,30 @@ export const useFeedbackStore = create<FeedbackState & { isLoading: boolean }>((
       }
 
       await response.json();
-      alert("Feedback submitted successfully!");
+      toast.success(" Feedback berhasil dikirim! Terima kasih atas masukannya 😊", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       set({ name: "", gmail: "", kepuasan: null, kritikDanSaran: "", tauLayananKamiDariMana: "" });
     } catch {
-      alert("There was an error submitting your feedback.");
+      toast.error("⚠️ Gagal mengirim feedback. Silakan coba lagi", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } finally {
       setTimeout(() => set({ isLoading: false }), 1000);
     }

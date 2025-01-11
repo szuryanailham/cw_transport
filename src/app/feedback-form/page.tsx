@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useFeedbackStore } from "@/store/feedbackStore";
-
+import { ToastContainer } from "react-toastify";
 function Page() {
   const { name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana, setName, setGmail, setKepuasan, setKritikDanSaran, setTauLayananKamiDariMana, submitForm, isLoading } = useFeedbackStore();
 
@@ -112,6 +112,7 @@ function Page() {
           {isLoading ? <span className="loading loading-spinner loading-md"></span> : "Submit"}
         </button>
       </form>
+      <ToastContainer />
     </div>
   );
 }

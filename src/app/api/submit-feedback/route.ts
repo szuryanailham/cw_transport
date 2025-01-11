@@ -19,24 +19,13 @@ export async function POST(request: Request) {
     const auth = new google.auth.JWT(CLIENT_EMAIL, undefined, PRIVATE_KEY, SCOPES);
     const sheets = google.sheets({ version: "v4", auth });
 
-    // Get the current highest id
-    const getResponse = await sheets.spreadsheets.values.get({
-      spreadsheetId: SPREADSHEET_ID,
-      range: `Sheet1!A:A`,
-    });
-
-    const rows = getResponse.data.values || [];
-    const lastRow = rows.length ? rows[rows.length - 1] : [0];
-    const lastId = parseInt(lastRow[0], 10) || 0;
-    const newId = lastId + 1;
-
     // Append the new data
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
       range: `Sheet1!A:F`,
       valueInputOption: "RAW",
       requestBody: {
-        values: [[newId, name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana, new Date().toISOString()]],
+        values: [[1, name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana, new Date().toISOString()]],
       },
     });
 
