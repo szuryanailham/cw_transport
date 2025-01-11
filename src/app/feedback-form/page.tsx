@@ -83,9 +83,11 @@ function Page() {
             <option value="" disabled>
               Pilih salah satu
             </option>
+            <option value="keluarga">Keluarga</option>
             <option value="teman">Teman</option>
             <option value="media_sosial">Media Sosial</option>
-            <option value="iklan">Iklan</option>
+            <option value="website">Website</option>
+            <option value="events">Events</option>
             <option value="lainnya">Lainnya</option>
           </select>
         </div>
