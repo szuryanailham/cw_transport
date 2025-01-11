@@ -40,7 +40,7 @@ function Page() {
         <div className="mb-4">
           <label className="block font-bold text-gray-700 dark:text-gray-300">Nomor Whatsapp</label>
           <input
-            type="email"
+            type="tel"
             value={no_wa}
             onChange={(e) => setno_wa(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-400 dark:text-white"

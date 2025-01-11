@@ -20,12 +20,14 @@ export async function POST(request: Request) {
     const sheets = google.sheets({ version: "v4", auth });
 
     // Append the new data
+    // Get the current data to determine the next ID
+
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
       range: `Sheet1!A:F`,
       valueInputOption: "RAW",
       requestBody: {
-        values: [[1, name, no_wa, kepuasan, kritikDanSaran, tauLayananKamiDariMana, new Date().toISOString()]],
+        values: [[name, no_wa, kepuasan, kritikDanSaran, tauLayananKamiDariMana, new Date().toISOString()]],
       },
     });
 
