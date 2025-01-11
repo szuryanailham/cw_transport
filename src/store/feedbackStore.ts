@@ -2,12 +2,12 @@ import { create } from "zustand";
 import { toast, Bounce } from "react-toastify";
 interface FeedbackState {
   name: string;
-  gmail: string;
+  no_wa: string;
   kepuasan: string | null;
   kritikDanSaran: string;
   tauLayananKamiDariMana: string;
   setName: (name: string) => void;
-  setGmail: (gmail: string) => void;
+  setno_wa: (no_wa: string) => void;
   setKepuasan: (kepuasan: string | null) => void;
   setKritikDanSaran: (kritikDanSaran: string) => void;
   setTauLayananKamiDariMana: (value: string) => void;
@@ -16,19 +16,19 @@ interface FeedbackState {
 
 export const useFeedbackStore = create<FeedbackState & { isLoading: boolean }>((set, get) => ({
   name: "",
-  gmail: "",
+  no_wa: "",
   kepuasan: null,
   kritikDanSaran: "",
   tauLayananKamiDariMana: "",
   isLoading: false,
   setName: (name) => set({ name }),
-  setGmail: (gmail) => set({ gmail }),
+  setno_wa: (no_wa) => set({ no_wa }),
   setKepuasan: (kepuasan) => set({ kepuasan }),
   setKritikDanSaran: (kritikDanSaran) => set({ kritikDanSaran }),
   setTauLayananKamiDariMana: (value) => set({ tauLayananKamiDariMana: value }),
 
   submitForm: async () => {
-    const { name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana } = get();
+    const { name, no_wa, kepuasan, kritikDanSaran, tauLayananKamiDariMana } = get();
     set({ isLoading: true });
     try {
       const response = await fetch("/api/submit-feedback", {
@@ -38,7 +38,7 @@ export const useFeedbackStore = create<FeedbackState & { isLoading: boolean }>((
         },
         body: JSON.stringify({
           name,
-          gmail,
+          no_wa,
           kepuasan,
           kritikDanSaran,
           tauLayananKamiDariMana,
@@ -61,7 +61,7 @@ export const useFeedbackStore = create<FeedbackState & { isLoading: boolean }>((
         theme: "light",
         transition: Bounce,
       });
-      set({ name: "", gmail: "", kepuasan: null, kritikDanSaran: "", tauLayananKamiDariMana: "" });
+      set({ name: "", no_wa: "", kepuasan: null, kritikDanSaran: "", tauLayananKamiDariMana: "" });
     } catch {
       toast.error("⚠️ Gagal mengirim feedback. Silakan coba lagi", {
         position: "top-right",

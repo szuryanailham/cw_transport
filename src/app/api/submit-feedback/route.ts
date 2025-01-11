@@ -9,10 +9,10 @@ const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n");
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana } = body;
+    const { name, no_wa, kepuasan, kritikDanSaran, tauLayananKamiDariMana } = body;
 
     // Validasi input
-    if (!name || !kritikDanSaran || !kepuasan || !gmail) {
+    if (!name || !kritikDanSaran || !kepuasan || !no_wa) {
       return NextResponse.json({ error: "Name, feedback, and satisfaction are required" }, { status: 400 });
     }
 
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
       range: `Sheet1!A:F`,
       valueInputOption: "RAW",
       requestBody: {
-        values: [[1, name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana, new Date().toISOString()]],
+        values: [[1, name, no_wa, kepuasan, kritikDanSaran, tauLayananKamiDariMana, new Date().toISOString()]],
       },
     });
 

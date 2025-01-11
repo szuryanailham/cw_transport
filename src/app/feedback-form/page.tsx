@@ -3,7 +3,7 @@ import React from "react";
 import { useFeedbackStore } from "@/store/feedbackStore";
 import { ToastContainer } from "react-toastify";
 function Page() {
-  const { name, gmail, kepuasan, kritikDanSaran, tauLayananKamiDariMana, setName, setGmail, setKepuasan, setKritikDanSaran, setTauLayananKamiDariMana, submitForm, isLoading } = useFeedbackStore();
+  const { name, no_wa, kepuasan, kritikDanSaran, tauLayananKamiDariMana, setName, setno_wa, setKepuasan, setKritikDanSaran, setTauLayananKamiDariMana, submitForm, isLoading } = useFeedbackStore();
 
   const emotions = [
     { id: 1, label: "Sangat Tidak Puas", emoji: "😡" },
@@ -36,15 +36,15 @@ function Page() {
           />
         </div>
 
-        {/* Gmail Input */}
+        {/* no_wa Input */}
         <div className="mb-4">
-          <label className="block font-bold text-gray-700 dark:text-gray-300">Gmail</label>
+          <label className="block font-bold text-gray-700 dark:text-gray-300">Nomor Whatsapp</label>
           <input
             type="email"
-            value={gmail}
-            onChange={(e) => setGmail(e.target.value)}
+            value={no_wa}
+            onChange={(e) => setno_wa(e.target.value)}
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-400 dark:text-white"
-            placeholder="Masukkan email Anda"
+            placeholder="Masukkan No Whatsapp Anda"
             required
           />
         </div>
