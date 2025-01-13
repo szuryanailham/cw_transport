@@ -46,7 +46,7 @@ function Navbar() {
         </div>
         <div className="navbar-end">
           <a
-            href="https://wa.me/628562711149?text=Halo%2C%20saya%20tertarik%20dengan%20jasa%20sewa%20rental%20mobil%20dan%20paket%20wisata%20di%20CW%20Transport.%20Bisa%20saya%20mendapatkan%20informasi%20lebih%20lanjut%20mengenai%20pilihan%20unit%20yang%20tersedia%20serta%20paket%20wisata%20yang%20ditawarkan%3F%20Terima%20kasih."
+            href="https://wa.me/6282230372696?text=Halo%2C%20saya%20tertarik%20dengan%20jasa%20sewa%20rental%20mobil%20dan%20paket%20wisata%20di%20CW%20Transport.%20Bisa%20saya%20mendapatkan%20informasi%20lebih%20lanjut%20mengenai%20pilihan%20unit%20yang%20tersedia%20serta%20paket%20wisata%20yang%20ditawarkan%3F%20Terima%20kasih."
             className="btn btn-success flex items-center text-white space-x-2 lg:space-x-1"
           >
             <FaWhatsapp className="text-lg lg:text-base" />
