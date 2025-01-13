@@ -9,7 +9,7 @@ const CardUnit: React.FC<CardUnitProps> = ({ imageUrl, unitName, price, descript
 
   const whatsappMessage = `Halo, saya tertarik untuk bertanya lebih lanjut atau memesan jasa untuk unit *${unitName}*. Apakah tersedia dan dapat dilayani? Terima kasih.`;
 
-  const whatsappUrl = `https://wa.me/628562711149?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/6282230372696?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="card bg-base-100 w-96 shadow-xl p-3 dark:bg-gray-800">
