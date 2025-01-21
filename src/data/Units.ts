@@ -47,4 +47,10 @@ export const UnitsData = [
     price: 3200000,
     description: "Big Bus menawarkan kenyamanan maksimal untuk grup besar, dengan fasilitas lengkap dan kapasitas besar untuk perjalanan jarak jauh.",
   },
+  {
+    imageUrl: "/images/elf.png",
+    unitName: "Isuzu Elf Long (17-19 set)",
+    price: 1500000,
+    description: "Isuzu Elf Long  merupakan kendaraan ideal untuk perjalanan bersama rombongan kecil hingga menengah.",
+  },
 ];
